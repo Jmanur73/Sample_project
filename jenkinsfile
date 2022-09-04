@@ -1,0 +1,26 @@
+#Jenkinsfile Scipted pipeline step by step excution for python project
+
+#Date: 04-09-2022 13:08 
+
+node {
+
+    def buildNumber =BUILD_NUMBER
+
+    stage("Git Clone") {
+
+        git url: 'https://github.com/Jmanur73/sample_project.git', branch: 'test'
+      }
+
+        stage("Build Docker Image") {
+        sh "docker build -t jmanur71/sample-project:${buildNumber} ."
+      }
+
+      stage("Docker login And Push") {
+          withCredentials([string(credentialsId: 'DockerHubPwd', variable: 'DockerHubPwd')]) {
+              sh 'docker login -u jmanur71 -p ${DockerHubPwd}'
+
+              sh "docker push jmanur71/sample-project:${buildNumber}"
+      }
+    }
+}
+
