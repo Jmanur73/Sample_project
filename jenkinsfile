@@ -21,6 +21,6 @@ node {
 
               sh "docker push jmanur71/sample-project:${buildNumber}"
       }
-     }
+    }
 }
 
