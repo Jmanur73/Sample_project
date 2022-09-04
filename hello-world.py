@@ -1,3 +1,7 @@
-#creating a new Hello-world program
+from time import sleep
 
-print("Hello, world")
+# the program will print hello world
+#  every 1 second foever
+while True:
+    print("Hello, World")
+    sleep(1)
