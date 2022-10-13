@@ -1,4 +1,4 @@
-FROM python:3.7.5-slim
+FROM python:3.7.14-slim
 WORKDIR /home
 RUN python -m pip install \
         parse \
